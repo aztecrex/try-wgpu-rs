@@ -1,3 +1,8 @@
+use wgpu::{Backends, Instance};
+
 fn main() {
-    println!("Hello, world!");
+    let instances = Instance::new(Backends::all());
+    for adapter in instances.enumerate_adapters(Backends::all()) {
+        println!("{:?}", adapter.get_info());
+    }
 }
